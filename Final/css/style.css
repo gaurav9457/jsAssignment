@@ -1,0 +1,896 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #575652;
+    background-color: black;
+}
+
+#container {
+    width: 1400px;
+    background-color: black;
+    /* height:1000px; */
+    margin: auto;
+}
+
+#nav {
+    height: 150px;
+    width: 1400px;
+    /* background-color:red; */
+    display: inline-block;
+}
+
+#logo {
+    padding: 30px 30px 30px 50px;
+    float: left;
+}
+
+#icon {
+    float: right;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.TopIcon {
+    float: left;
+    padding: 7px 30px 10px 20px;
+    border-right: 1px solid grey;
+}
+
+.TopIcon:hover {
+    /* border-bottom:1px solid yellow; */
+    background-color: #ffbe0b;
+    cursor: pointer;
+}
+
+#icon3 {
+    border: none;
+}
+
+#navBar {
+    width: 1050px;
+    height: 50px;
+    /* background-color:green; */
+    margin-top: 90px;
+    margin-left: 350px;
+}
+
+ul {
+    list-style-type: none;
+
+}
+
+ul li {
+    float: left;
+    padding: 15px;
+    font-size: 18px;
+    margin-left: 15px;
+
+}
+
+ul li a {
+    text-decoration: none;
+    padding: 15px;
+    color: white;
+}
+
+ul li:hover {
+    background-color: #ffbe0b;
+}
+
+/* #middle {
+    height: 600px;
+    width: 1400px;
+
+}
+
+#middleImage {
+    height: 610px;
+    width: 1150px;
+    float: right;
+    background-image: url("../images/demo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+#imgTextDiv {
+    margin-top: 450px;
+    display: inline-block;
+}
+
+.imgText {
+    background-color: black;
+    color: white;
+    padding: 5px 15px 5px 65px;
+}
+
+#imgText1 {
+    font-size: 45px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    margin-left: 390px;
+}
+
+#imgText2 {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-left: 700px;
+}
+
+.midBox {
+    height: 123.3px;
+    width: 165px;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    padding: 40px;
+    border-right: 5px solid white;
+}
+
+.lightText {
+    font-weight: lighter;
+    font-size: 33px;
+    font-style: normal;
+    opacity: 0.5;
+    letter-spacing: 1px;
+}
+
+#clip-path {
+    height: 610px;
+    width: 60px;
+    float: left;
+}
+
+.clip-pathBox {
+    height: 203.3px;
+    width: 60px;
+
+}
+
+#clip-pathBox1 {}
+
+#clip-pathBox2 {}
+
+#clip-pathBox3 {
+    background-color: rgb(125 215 186);
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 0% 0%);
+    margin-left: 0px;
+
+}
+
+.border-span {
+    height: 193.3px;
+    width: 50px;
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 0% 0%);
+    background-color: white;
+}
+
+#midBox1 {
+    background-color: rgb(255 202 34);
+
+}
+
+#midBox2 {
+    background-color: rgb(166 208 59);
+    opacity: 0.9;
+}
+
+#midBox3 {
+    background-color:#72efdd;
+    background-color: rgb(125 215 186);
+    border:none;
+
+}
+
+.midBox:hover {
+    cursor: pointer;
+
+} */
+/* #parent {
+    height: 610px;
+    width: 1400px;
+    position:relative;
+	margin:auto;
+  }
+  .path-parent {
+    height: 123.3px;
+    width: 165px;
+    background-color: aqua;
+    float: left;
+	padding:40px 50px 40px 30px;
+	font-size: 20px;
+	text-align: center;
+	color: white;
+	line-height:10px;
+	border-right:5px solid white;
+  }
+  .lightText {
+    font-weight: lighter;
+    font-size: 33px;
+    font-style: normal;
+    opacity: 0.5;
+    letter-spacing: 1px;
+}
+  .clip-path {
+    height: 203.3px;
+    width: 30px;
+    background-color: rgb(125 215 186);
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 0% 0%);
+    float: left;
+    display: none;
+	visibility:hidden;
+	
+  }
+  .path-parent:hover + .clip-path {
+    display: block;
+	visibility:visible;
+	
+  }
+  .path-parent:hover{
+  border:none;
+  }
+  #child1{
+  width:200px;
+  height:610px;
+  float:left;
+  background-color:red;
+  }
+  #backImg{
+  height:610px;
+  width:1200px;
+    background-image:url("../images/demo.jpg") ;
+	background-size:cover;
+	float:left;
+  }
+  #child2{
+  width:400px;
+  position:absolute;
+  }
+  #path-parent1, #clip-path1{
+  background-color:rgb(255 202 34);
+  }
+  #path-parent2, #clip-path2{
+  background-color:green;
+  }
+  #path-parent3,#clip-path3{
+  background-color:aqua;
+  }
+  #imgTextDiv {
+    margin-top: 450px;
+    display: inline-block;
+}
+
+.imgText {
+    background-color: black;
+    color: white;
+    padding: 5px 15px 5px 65px;
+}
+
+#imgText1 {
+    font-size: 45px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    margin-left: 450px;
+}
+
+#imgText2 {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-left: 750px;
+} */
+
+ #parent {
+    height: 610px;
+    width: 1400px;
+    position:relative;
+	margin:auto;
+  }
+  .path-parent {
+    height: 123.3px;
+    width: 165px;
+    background-color: aqua;
+    float: left;
+	padding:40px 50px 40px 30px;
+	font-size: 20px;
+	text-align: center;
+	color: white;
+	/* line-height:10px; */
+	border-right:5px solid white;
+  }
+  .lightText {
+    font-weight: lighter;
+    font-size: 33px;
+    font-style: normal;
+    opacity: 0.5;
+    letter-spacing: 1px;
+}
+  .clip-path {
+    height: 203.3px;
+    width: 30px;
+    /* background-color: rgb(125 215 186); */
+       clip-path:polygon(15% 0%, 100% 50%, 0% 100%, 0% 0%);
+    float: left;
+    /* display: none;  */
+	visibility:hidden;
+	
+  }
+  .path-parent:hover + .clip-path {
+    display: block;
+	visibility:visible;
+	
+  }
+  .path-parent:hover{
+  border:none;
+  }
+  .border{
+  height:200px;
+  width:25px;
+  background-color:rgb(255 202 34);
+  clip-path: polygon(0% 0%, 100% 50%, -10% 100%, 0% 0%);
+  }
+  #child1{
+  width:200px;
+  height:610px;
+  float:left;
+  background-color:red;
+  }
+  #backImg{
+  height:610px;
+  width:1200px;
+    background-image:url("../images/demo.jpg") ;
+	background-size:cover;
+	float:left;
+  }
+  #child2{
+  width:400px;
+  position:absolute;
+  }
+  #path-parent1{
+   background-color:rgb(255 202 34);
+  }
+  #path-parent2, #border2{
+  background-color:green;
+  }
+  #path-parent3, #border3{
+  background-color:aqua;
+  }
+  #clip-path1{
+  background-color:white;
+  }
+  #clip-path2{
+  background-color:white;
+  }
+  #clip-path3{
+  background-color:white;
+  }
+  #imgTextDiv {
+    margin-top: 450px;
+    display: inline-block;
+}
+
+.imgText {
+    background-color: black;
+    color: white;
+    padding: 5px 15px 5px 65px;
+}
+
+#imgText1 {
+    font-size: 45px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    margin-left: 450px;
+}
+
+#imgText2 {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-left: 750px;
+}
+
+
+#storyMainDiv {
+    height: 435px;
+    width: 1320px;
+    background-color: rgb(221 217 206);
+    margin-top: 10px;
+    padding: 40px;
+}
+
+.story {
+    height: 420px;
+    width: 438.3px;
+    /* background-color:red; */
+    float: left;
+    /* border-right:1px solid grey; */
+}
+
+#story1Div {
+    padding: 15px;
+    border-right: 1px solid grey;
+}
+
+#story2Div {
+    padding: 15px;
+    border-right: 1px solid grey;
+}
+
+#story3Div {
+    padding: 15px;
+}
+
+#story3 {
+    border: none;
+}
+
+#storyImg {
+    margin-top: 15px;
+    padding: 5px;
+}
+
+#storyDivText {
+    margin-top: 17px;
+    line-height: 35px;
+    font-size: 20px;
+    /* text-align: justify; */
+}
+
+#btn {
+    padding: 8px 15px;
+    background-color: black;
+    color: white;
+    margin-left: 300px;
+    border: none;
+    cursor: pointer;
+}
+
+#mission {
+    height: 150px;
+    width: 1400px;
+    background-color: #101010;
+    display: inline-block;
+}
+
+#Ourmission1 {
+    width: 200px;
+    float: left;
+    font-size: 20px;
+    padding: 20px 0px 10px 70px;
+    color: white;
+    /* background-color:red; */
+}
+
+#Ourmission2 {
+    width: 980px;
+    float: right;
+    /* background-color:red; */
+    color: grey;
+    line-height: 22px;
+    padding: 20px 0 0 35px;
+    margin-right: 100px;
+
+}
+
+#bottomquot {
+    /* margin-top:3px; */
+    padding-top: 10px;
+}
+
+#month {
+    width: 1400px;
+    height: 270px;
+    background-color: #080808;
+    /* margin-top:20px; */
+}
+
+.monthDiv {
+    height: 270px;
+    width: 400px;
+    /* background-color:green; */
+    float: left;
+    margin: 20px 20px 0px 20px;
+}
+
+#monthInnerDiv {
+    padding: 20px;
+
+}
+
+#monthText {
+    font-size: 40px;
+    color: #ffbe0b;
+}
+
+#monthYear {
+    font-size: 40px;
+    color: grey;
+}
+
+#monthHead {
+    margin-top: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+#monthHead2 {
+    margin-top: 10px;
+    color: grey;
+    line-height: 25px;
+    font-weight: light;
+    font-size: 15px;
+}
+
+.monthBtn {
+    padding: 14px 15px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+#monthBtn1 {
+    background-color: #ffbe0b;
+}
+
+#monthBtn2 {
+    background-color: #aacc00;
+}
+
+#monthBtn3 {
+    background-color: #2ec4b6;
+}
+
+#footer {
+    width: 1400px;
+    display: inline-block;
+    background-color: black;
+}
+
+#footLogo {
+    /* height:50px; */
+    width: 350px;
+    /* background-color:red; */
+    margin: 20px;
+    padding: 10px;
+    float: left;
+
+}
+
+#hope {
+    font-size: 50px;
+    color: #ffbe0b;
+    font-style: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+}
+
+#Center {
+    font-size: 50px;
+    color: white;
+}
+
+#footIconMain {
+    /* background-color:green; */
+    float: right;
+    /* height:30px; */
+    width: 200px;
+    margin: 30px;
+}
+
+.footicon {
+    /* background-color:red; */
+    padding: 5px;
+}
+
+.footIocnli {
+    background-color: aqua;
+    padding: none;
+    /* float:right; */
+}
+
+#footNavMain {
+    height: 50px;
+    width: 1400px;
+    /* background-color:green; */
+}
+
+#footNav {
+    /* height:30px; */
+    width: 830px;
+    /* background-color:blue; */
+    float: left;
+    padding: 0px 10px 0px 30px;
+}
+
+#tel {
+    height: 30px;
+    width: 500px;
+    /* background-color:red; */
+    float: right;
+}
+
+#footNav ul li {
+    border-right: 1px solid;
+    padding: 10px;
+}
+
+#footNav ul li:last-child {
+    border-right: none;
+}
+
+#footNav ul li:hover {
+    background-color: black;
+}
+
+#footNav ul li a:hover {
+    background-color: black;
+    color: #ffbe0b;
+    border-bottom: 1px solid #ffbe0b;
+    /* border-right:none; */
+}
+
+#telImg {
+    float: left;
+    padding: 5px;
+}
+
+#telText {
+    font-size: 40px;
+    color: #ffbe0b;
+}
+
+#telTextDiv {
+    padding: 3px 5px 3px 15px;
+    float: left;
+}
+
+#telText2 {
+    font-size: 40px;
+    color: grey;
+}
+
+#lastFooterMain {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid grey;
+    background-color: black;
+    color: white;
+    margin: 20px 50px 10px 50px;
+}
+
+.lastText {
+    text-decoration: none;
+    color: white;
+}
+#popupDiv{
+    height: 100vh;
+    width: 1400px;
+    background-color: rgb(33, 33, 32,0.8);
+    position: fixed;
+    top: 0;
+    display: none;
+   
+}
+#LoginImg{
+    height:400px;
+    width:300px ;
+    background-image: url("https://img.freepik.com/free-vector/access-control-system-abstract-concept_335657-3180.jpg");
+    background-size: contain;
+    display: inline-block;
+    /* position: absolute;
+    top: 164px;
+    left: 200px; */
+}
+#popup-child{
+    height: 400px;
+    width: 400px;
+    background: linear-gradient(to right, #ac924e, #fbc226); 
+    position: absolute;
+    /* inset: 0;
+    margin: auto; */
+    display: inline-block;
+}
+#popupChildMain{
+    height: 400px;
+    width: 730px; 
+    position: absolute;
+    inset: 0;
+    margin: auto;
+
+}
+#close{
+    position: absolute;
+    top: 5px;
+    left: 360px;
+    cursor: pointer;
+    color: white;
+    border-radius: 50px;
+    font-size: 35px;
+    font-weight: bold;
+}
+#formDiv{
+    height: 300px;
+    width: 350px;
+    /* background-color: red; */  
+    margin: auto;
+    margin-top: 60px;
+}
+#Username,#Password{
+    padding: 6px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid;
+    width: 280px;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-left: 25px;
+    color: rgb(246, 239, 239);
+    
+}
+::placeholder {
+    color: rgb(231, 223, 223);
+    
+  }
+#labelUsername,#labelPassword{
+   color: rgb(251, 249, 249);
+   font-size: 20px;
+   margin-left: 20px;
+   
+
+}
+#Username,#Password:focus{
+    outline: none;
+}
+#Loginbtn{
+    padding: 15px 28px;
+    background-color: #2e7ec4;
+    border: 1px solid;
+    margin: 50px 10px 10px 120px;
+    color: white;
+    font-size:large;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.5);
+}
+#Loginbtn:hover{
+    background-color: white;
+    color:#2e7ec4 ;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+#Formcontainer {
+    border-radius: 5px;
+    background-color: rgb(33, 33, 32,0.9);
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: none;
+  }
+  #formDiv1{
+    width:430px;
+    height:600px;
+    position: fixed;
+    inset: 0;
+    margin:auto;
+    /* background-color:green; */
+    background: linear-gradient(to right, #ac924e, #fbc226); 
+    padding:20px;
+    border-radius:10px;
+
+  }
+  
+  #fname,#lname,#state,#age,#dob,#mobile,#city,#address{
+  padding:6px;
+  width:400px;
+  /* border-radius:5px; */
+  margin:8px;
+  border:none;
+  background: none;
+  border-bottom: 1px solid ;
+  color: rgb(246, 239, 239);
+  }
+  ::placeholder {
+    color: rgb(226, 225, 225);
+    
+  }
+  .lableColor{
+    color: rgb(255, 255, 255);
+  }
+   
+  
+  #gender{
+  width:30px;
+  margin:8px;
+  
+  }
+  .checkBoxDiv{
+  width:20px;
+  margin:5px;
+  }
+  .btn{
+  padding:10px 15px ;
+  border:none;
+  margin:30px;
+  cursor:pointer;
+  }
+  #btn-div{
+  margin-left:100px;
+  }
+  #submit{
+  background-color:green;
+  color:white;
+  box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.5);
+  
+  }
+  #reset{
+  background-color:red;
+  color:white;
+  box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.5);
+  }
+  #submit:hover{
+    background-color: white;
+    color: green;
+  }
+  #reset:hover{
+    background-color: white;
+    color: red;
+  }
+  #registerlink{
+    color: #2e7ec4;
+    text-align: center;
+    
+  }
+  #registerLinkDiv{
+   margin-top: 20px;
+   text-align: center;
+  }
+  
+  .alert {
+    padding: 15px;
+    background: linear-gradient(to right, #f7a2a2, #dd1818);
+    color: white;
+    display: none;
+    width: 400px;
+    position: absolute;
+    top: 10px;
+    right:20px;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+  
+  #progressBar {
+    width: 200px;
+    height: 5px;
+    background: white;
+    margin-top: 3px;
+    
+  }
+  
+  @keyframes progress {
+    0% {
+        width: 380px
+    }
+  
+    100% {
+        width: 0px
+    }
+  
+  }
+  .errorDiv{
+    color: red;
+    font-size: 10px;
+    padding: 0px;
+    /* display: none; */
+  }
