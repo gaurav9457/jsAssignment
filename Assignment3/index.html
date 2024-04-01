@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css">
+ </head>
+ <body>
+    <div id="container">
+       <div id="formDiv">
+        <form action="" id="formObj">
+		<!-- <div id="nameDiv" class=""> -->
+			<label for="fname" class="lableColor">First Name : </label> <br>
+            
+            <input type="text" id="fname" name="firstname" placeholder="Your First name.."  >
+            <div id="errorSpan" class="errorDiv"></div>
+			<br>
+             <!-- </div> -->
+			 
+             <!-- <div id="lnameDiv" class=""> -->
+				<label for="lname" class="lableColor">Last Name : </label> <br>
+            
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            <div id="errorSpan1" class="errorDiv"></div>
+             <!-- </div> -->
+            
+            
+			<label for="gender" class="lableColor">Gender : </label>
+            <input type="radio" name="gender" id="gender" value="male"><label for="male" class="lableColor">Male</label>
+            <input type="radio" name="gender" id="gender" value="female"><label for="female" class="lableColor">Female</label>
+			<input type="radio" name="gender" id="gender" value="Other"><label for="other" class="lableColor">Other</label>
+            <div id="errorSpan"></div>
+            <br>
+			<div id="dobDiv" class="">
+				<label for="dob" class="lableColor">Date Of Birth : </label> <br>
+				
+            <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" onblur="">
+            <div id="dobErrorDiv"></div>
+            </div>
+
+             <div id="ageDiv" class="">
+				<label for="age" class="lableColor">Age : </label> <br>
+				
+            <input type="number" name="age" id="age" >
+            <div id="ageErrorDiv"></div>
+             </div>
+		
+            
+            
+            <!-- <label for="mob">Mobile no : </label> <br>
+            
+            <input type="tel" name="mob" id="mobile" minlength=0 maxlength=10> -->
+            <br>
+			<label for="address" class="lableColor">Address : </label><br>
+			<textarea name="" id="" cols="53" rows="" style="margin:10px"></textarea>
+            <div id="errorSpan"></div>
+			
+			
+			<div id="cityDiv" class="">
+				<label for="city" class="lableColor">City : </label>
+				<br>
+				<select name="city" id="city">
+                <option value="Pune">Pune</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Nashik">Nashik</option>
+				<option value="Jalgaon">Jalgaon</option>
+				<option value="Surat">Surat</option>
+			    <option value="Nagpur">Nagpur</option>
+
+            </select>
+				
+			</div>
+			
+            
+           
+           <br>
+           <label for="Skills" class="lableColor">Techinical Skills : </label>
+                <!-- <input type="checkbox" name="Skills" class="checkBoxDiv" id="java" value="Java"><label for="">Java</label> -->
+                <input type="checkbox" name="Skills" class="checkBoxDiv" id="html" value="Html"><label for="" class="lableColor">Html</label>
+                
+                <input type="checkbox" name="Skills" class="checkBoxDiv" id="css" value="Css"><label for="" class="lableColor">CSS</label>
+                <input type="checkbox" name="Skills" class="checkBoxDiv" id="javascript" value="Javascript"><label for="" class="lableColor">Javascript</label>
+				<div id="errorSpan"></div>
+        </form>
+		<div id="btn-div" class="">
+			<button onclick="" class="btn" id="submit">Submit</button>
+		    <button onclick="document.getElementById('formObj').reset()" class="btn" id="reset">Reset</button>
+		</div>
+        
+       </div>
+
+       <div class="alert" id="alertBox">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong id="msg"></strong>
+        <div id="progressBar" class="">
+
+        </div>
+    </div>
+
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>
