@@ -14,56 +14,57 @@
        <div id="formDiv">
         <form action="" id="formObj">
 		<!-- <div id="nameDiv" class=""> -->
-			<label for="fname" class="lableColor">First Name : </label> <br>
+			<label for="fname" class="lableColor">First Name <span class="starColor">*</span>: </label> <br>
             
-            <input type="text" id="fname" name="firstname" placeholder="Your First name.."  >
-            <div id="errorSpan" class="errorDiv"></div>
-			<br>
+            <input type="text" id="fname" name="firstname" placeholder="Your First name.." class="inpformat inpValid" oninput="validate.inputErrorDisplay(this)">
+            <div id="firstnameError" class="errorDiv">&nbsp;</div>
+			<!-- <br> -->
              <!-- </div> -->
 			 
              <!-- <div id="lnameDiv" class=""> -->
-				<label for="lname" class="lableColor">Last Name : </label> <br>
+				<label for="lname" class="lableColor">Last Name <span class="starColor">*</span> : </label> <br>
             
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-            <div id="errorSpan1" class="errorDiv"></div>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name.." class="inpformat inpValid" oninput="validate.inputErrorDisplay(this)">
+            <div id="lastnameError" class="errorDiv">&nbsp;</div>
              <!-- </div> -->
             
             
-			<label for="gender" class="lableColor">Gender : </label>
+			<label for="gender" class="lableColor">Gender <span class="starColor">*</span>: </label>
             <input type="radio" name="gender" id="gender" value="male"><label for="male" class="lableColor">Male</label>
             <input type="radio" name="gender" id="gender" value="female"><label for="female" class="lableColor">Female</label>
 			<input type="radio" name="gender" id="gender" value="Other"><label for="other" class="lableColor">Other</label>
-            <div id="errorSpan"></div>
+            <div id="errorSpan" ></div>
             <br>
 			<div id="dobDiv" class="">
-				<label for="dob" class="lableColor">Date Of Birth : </label> <br>
+				<label for="dob" class="lableColor">Date Of Birth <span class="starColor">*</span>: </label> <br>
 				
-            <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" onblur="">
-            <div id="dobErrorDiv"></div>
+            <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" oninput="validate.inputErrorDisplay(this)" class="inpformat" >
+            <div id="dobError" class="errorDiv">&nbsp;</div>
             </div>
 
              <div id="ageDiv" class="">
-				<label for="age" class="lableColor">Age : </label> <br>
+				<label for="age" class="lableColor">Age <span class="starColor">*</span>: </label> <br>
 				
-            <input type="number" name="age" id="age" >
-            <div id="ageErrorDiv"></div>
+            <input type="number" name="age" id="age" class="inpformat">
+            <div id="ageErrorDiv" class="errorDiv"></div>
              </div>
 		
             
             
-            <!-- <label for="mob">Mobile no : </label> <br>
+            <label for="mob" class="lableColor">Mobile no <span class="starColor">*</span>: </label> <br>
             
-            <input type="tel" name="mob" id="mobile" minlength=0 maxlength=10> -->
+            <input type="tel" name="mob" id="mobile" minlength=0 maxlength=10 class="inpformat">
             <br>
 			<label for="address" class="lableColor">Address : </label><br>
-			<textarea name="" id="" cols="53" rows="" style="margin:10px"></textarea>
-            <div id="errorSpan"></div>
+			<textarea name="" id="" cols="53" rows="" style="margin:10px;width:400px;"></textarea>
+            <div id="errorSpan"class="errorDiv"></div>
 			
 			
 			<div id="cityDiv" class="">
 				<label for="city" class="lableColor">City : </label>
 				<br>
 				<select name="city" id="city">
+                <option value="" >Select city</option>
                 <option value="Pune">Pune</option>
                 <option value="Mumbai">Mumbai</option>
                 <option value="Nashik">Nashik</option>
@@ -78,17 +79,17 @@
             
            
            <br>
-           <label for="Skills" class="lableColor">Techinical Skills : </label>
+           <label for="Skills" class="lableColor">Techinical Skills <span class="starColor">*</span>: </label>
                 <!-- <input type="checkbox" name="Skills" class="checkBoxDiv" id="java" value="Java"><label for="">Java</label> -->
                 <input type="checkbox" name="Skills" class="checkBoxDiv" id="html" value="Html"><label for="" class="lableColor">Html</label>
                 
                 <input type="checkbox" name="Skills" class="checkBoxDiv" id="css" value="Css"><label for="" class="lableColor">CSS</label>
                 <input type="checkbox" name="Skills" class="checkBoxDiv" id="javascript" value="Javascript"><label for="" class="lableColor">Javascript</label>
-				<div id="errorSpan"></div>
+				<div id="checkboxError" class="errorDiv"></div>
         </form>
 		<div id="btn-div" class="">
-			<button onclick="" class="btn" id="submit">Submit</button>
-		    <button onclick="document.getElementById('formObj').reset()" class="btn" id="reset">Reset</button>
+			<button onclick="" class="btn" id="submit">Submit &rarr;</button>
+		    <button onclick="validate.resetForm()" class="btn" id="reset">Reset</button>
 		</div>
         
        </div>
