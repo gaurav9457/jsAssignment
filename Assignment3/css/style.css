@@ -2,20 +2,20 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 #container {
   border-radius: 5px;
-  background-color: wheat;
+   background-color: rgb(33, 33, 32,0.9);
   padding: 20px;
 }
 #formDiv{
   width:430px;
-  height:600px;
+  height:650px;
   margin:auto;
   /* background-color:green; */
-  background: linear-gradient(to right, #ac924e, #fbc226); 
+  background: linear-gradient(to right, #af934b, #fbc226); 
   padding:20px;
   border-radius:10px;
 }
 
-#fname,#lname,#state,#age,#dob,#mobile,#city,#address{
+.inpformat{
 padding:6px;
 width:400px;
 /* border-radius:5px; */
@@ -25,9 +25,22 @@ background: none;
 border-bottom: 1px solid ;
 color: rgb(246, 239, 239);
 }
+.inpformat:focus{
+outline:none;
+}
+
 ::placeholder {
   color: rgb(226, 225, 225);
   
+}
+#city{
+width:400px;
+padding:6px;
+border:none;
+margin:8px;
+background: none;
+border-bottom: 1px solid white;
+
 }
 .lableColor{
   color: rgb(255, 255, 255);
@@ -69,15 +82,20 @@ color:white;
   background-color: white;
   color: red;
 }
+.starColor{
+color:red;
+}
 
 .alert {
   padding: 15px;
-  background: linear-gradient(to right, #f7a2a2, #dd1818);
+  /* background: linear-gradient(to right, #ff416c, #ff4b2b); */
+  /* //background-color: #990000; */
+  background: linear-gradient(147deg, #990000 0%, #ff0000 74%);
   color: white;
   display: none;
   width: 400px;
   position: absolute;
-  top: 10px;
+  top: 20px;
   right:20px;
 }
 
