@@ -1,20 +1,23 @@
 
 let submitBtn=document.getElementById("submit");
+let oninputValidate=document.getElementsByClassName("inpValid");
 
 submitBtn.addEventListener("click",(e)=>{
    validate.validationForm();
 })
 
+
 var validate= new ValidationFormMain();
 
 function ValidationFormMain() {
     this.validationForm=validationForm;
-
+     this.resetForm=resetForm;
+	 this.inputErrorDisplay=inputErrorDisplay;
     function validationForm() {
         let fname=document.getElementById("fname").value;
         let lname=document.getElementById("lname").value;
         let gender = document.querySelector('input[name="gender"]:checked');
-       // let mobile=document.getElementById("mobile").value;
+        let mobile=document.getElementById("mobile").value;
         let dob=document.getElementById("dob").value;
         let  age=document.getElementById("age").value;
         let city=document.getElementById("city").value;
@@ -23,29 +26,31 @@ function ValidationFormMain() {
         let html=document.getElementById("html");
         let css=document.getElementById("css");
         let javascript=document.getElementById("javascript");
+
         let dateValidationResult = isValidDate(dob);
 
         let checkboxes = document.querySelectorAll('input[name="Skills"]:checked');
-        let errorSpan=document.getElementById("errorSpan");
-        
+        let firstnameError=document.getElementById("firstnameError");
         
 
-    let pattern=/^[A-Za-z]{1,15}$/;
+    let pattern=/^[a-zA-Z]{1,15}$/;
     let num=/\d/;
     let count=/\d{10}$/;
     let ageCount=/\d{1,2}$/;
     let dobvalidate= /\d{1,2}\/\d{1,2}\/\d{4}/;
 
         if (fname=="") { 
-            errorSpan.innerHTML="Enter first name it is mandatory";
-            console.log("Entered");
+            //firstnameError.innerHTML="Enter first name it is mandatory";
+			alertDisplay("Enter first name it is mandatory");
+            
         } 
-        else if(num.test(fname)){
+        else if(!fname.match(pattern)){
           
             alertDisplay("First Name Not contain number");
         }
         else if(lname=="") {
-           document.getElementById("errorSpan1").innerHTML= "last name is mandatory";
+          // document.getElementById("lastnameError").innerHTML= "last name is mandatory";
+		   alertDisplay("Last name is mandatory");
         }
         else if(num.test(lname)){
             alertDisplay("last name not contain numbers")
@@ -53,37 +58,58 @@ function ValidationFormMain() {
         else if (!gender) {
             alertDisplay("Please select a gender");
         }
-        else if (!dobvalidate.test(dob)) {
-            document.getElementById("dobErrorDiv").innerHTML="Please enter a valid date of birth in the format dd/mm/yyyy";
-        }
+        //else if (!dobvalidate.test(dob)) {
+           // document.getElementById("dobErrorDiv").innerHTML="Please enter a valid date of birth in the format dd/mm/yyyy";
+        //}
         else if (dateValidationResult === "invalidFormat") {
             alertDisplay("Please enter a valid date of birth in the format dd/mm/yyyy");
-            return;
-        } else if (dateValidationResult === "invalidDate") {
+            //return;
+        } 
+		else if (dateValidationResult === "invalidDate") {
             alertDisplay("Please enter a valid date");
-            return;
-        } else if (dateValidationResult === "futureDate") {
+            //return;
+        } 
+		else if (dateValidationResult === "futureDate") {
             alertDisplay("Date of birth should be before the year 2024");
-            return;
+            //return;
         }
-        // else if(mobile==""){
-        //     document.getElementById("mobErrorDiv").innerHTML="Please enter mobile number";
-        // }
-        // else if(!count.test(mobile)){
-        //     alert("Enter 10 digit mobile no");
-        // }
+         else if(mobile==""){
+             alertDisplay("Please enter mobile number");
+         }
+         else if(!count.test(mobile)){
+             alertDisplay("Enter 10 digit mobile no");
+         }
+		 else if(pattern.test(mobile)){
+             alertDisplay("Mobile no not contain alphabets");
+         }
+		 else if(!ageCount.test(age)){
+            document.getElementById("ageErrorDiv").innerHTML="Enter 2 digit age";
+        }
+		else if(!(age > 17 && age < 70)){
+		   alertDisplay("You are age was not eligible for register");
+		}
         else if (checkboxes.length === 0) {
             document.getElementById("checkboxError").innerHTML="Please select at least one skill";
         }
             
-        else if(!ageCount.test(age)){
-            document.getElementById("ageErrorDiv").innerHTML="Enter 2 digit age";
+       
+		else if(city==""){
+           alertDisplay("Please select city");
         }
 
         else{
-            alert("Form submitted");
+           // alert("Form submitted");
+		   document.getElementById("alertBox").style.display = 'block';
+		   document.getElementById("alertBox").style.background='green';
+           document.getElementById("msg").innerHTML = "Form submitted Successfully";
+           document.getElementById("progressBar").style.animation = 'progress 3s 1 ease-in-out';
+           setTimeout(function () {
+               document.getElementById("alertBox").style.display = 'none';
+           }, 3000);
+			
+			resetForm();
         }
-        }
+      }
     
 
         function isValidDate(dateString) {
@@ -93,38 +119,32 @@ function ValidationFormMain() {
             if (!datePattern.test(dateString)) {
                 return "invalidFormat"; 
             }
-        
-            
+           
             let parts = dateString.split('/');
-            let day = parseInt(parts[0], 10);
-            let month = parseInt(parts[1], 10) - 1; 
-            let year = parseInt(parts[2], 10);
-        
-            
+            let day = parseInt(parts[0]);
+            let month = parseInt(parts[1]) - 1; 
+            let year = parseInt(parts[2]);
+                  
             let testDate = new Date(year, month, day);
-        
-            
+                   
             if (testDate.getFullYear() !== year || testDate.getMonth() !== month || testDate.getDate() !== day) {
+				
                 return "invalidDate"; 
             }
-        
-            
+                   
             if (year >= 2024) {
                 return "futureDate"; 
             }
         
-            calculateAge(dateString);
+            calculateAge(day,month,year);
             return true;
         }
 
-        function calculateAge(dob) {
+
+         function calculateAge(day,month,year) {
             let  ageInp=document.getElementById("age");
-            let dobParts = dob.split('/');
-            let dobDay = parseInt(dobParts[0], 10);
-            let dobMonth = parseInt(dobParts[1], 10);
-            let dobYear = parseInt(dobParts[2], 10);
+           
         
-            
             let currentDate = new Date();
         
             let currentDay = currentDate.getDate();
@@ -132,10 +152,10 @@ function ValidationFormMain() {
             let currentYear = currentDate.getFullYear();
         
             
-            let age = currentYear - dobYear;
+            let age = currentYear - year;
         
            
-            if (currentMonth < dobMonth || (currentMonth === dobMonth && currentDay < dobDay)) {
+            if (currentMonth < month || (currentMonth === month && currentDay < day)) {
                 age--;
             }
               
@@ -145,12 +165,67 @@ function ValidationFormMain() {
         
         function alertDisplay(msg) {
             document.getElementById("alertBox").style.display = 'block';
+			document.getElementById("alertBox").style.background= "linear-gradient(147deg, #990000 0%, #ff0000 74%)";
            document.getElementById("msg").innerHTML = msg;
            document.getElementById("progressBar").style.animation = 'progress 3s 1 ease-in-out';
            setTimeout(function () {
                document.getElementById("alertBox").style.display = 'none';
            }, 3000);
+
         }
+
+		function resetForm(){
+			
+		   document.getElementById('formObj').reset()
+			document.getElementById("firstnameError").innerHTML=" ";
+			document.getElementById("lastnameError").innerHTML=" ";
+			document.getElementById("checkboxError").innerHTML=" ";
+			document.getElementById("ageErrorDiv").innerHTML=" "; 
+			document.getElementById("dobErrorDiv").innerHTML=" ";
+
+		}
+
+		function inputErrorDisplay(e){
+			let err=document.getElementById(e.name+"Error");
+			let dobvalidate= /\d{1,2}\/\d{1,2}\/\d{4}/;
+			//let pattern=/^[a-zA-Z]{1,15}$/;
+			if(e.id=="fname" || e.id=="lname"){
+				 if (e.value.match("[^a-z]"))
+                     {
+					err.innerHTML="Error Name Not Contain number";
+				    }
+				
+				else{
+					err.innerHTML="&nbsp;";
+				}
+			}
+			else if(e.id=="dob"){
+				let dateValidationResult = isValidDate(e.value);
+
+			    if (!dobvalidate.test(e.value)) {
+					err.innerHTML="Please enter a valid date of birth in the format dd/mm/yyyy";
+				}
+				else if (dateValidationResult === "invalidFormat") {
+					err.innerHTML="Please enter a valid date of birth in the format invalid date";
+					//return;
+				} 
+				else if (dateValidationResult === "invalidDate") {
+					err.innerHTML="Please enter a valid date";
+					//return;
+				} 
+				else if (dateValidationResult === "futureDate") {
+					err.innerHTML="Date of birth should be before the year 2024";
+					//return;
+				}
+				else{
+				   err.innerHTML="&nbsp;";
+				}
+			
+
+			
+			}
+		
+		}
 
 
     
