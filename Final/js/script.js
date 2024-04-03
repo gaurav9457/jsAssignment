@@ -1,70 +1,84 @@
-let display=document.getElementById("popupDiv");
-let displayRegister=document.getElementById("Formcontainer");
-let loginDiv=document.getElementById("popupChildMain");
-let formObj=document.getElementById("formObj");
-
+let display = document.getElementById("popupDiv");
+let displayRegister = document.getElementById("Formcontainer");
+let loginDiv = document.getElementById("popupChildMain");
+let formObj = document.getElementById("formObj");
+var validate = new ValidationFormMain();
 var logBtnName;
-window.onclick = function(e) {
-   
-    if (e.target == display || e.target==displayRegister) {
+window.onclick = function (e) {
+
+    if (e.target == display || e.target == displayRegister) {
         display.style.display = "none";
-        displayRegister.style.display='none';
-        
+        displayRegister.style.display = 'none';
+
     }
 }
 
 
 var loginObj = new LoginObjMain();
 
-function LoginObjMain(){
-      this.login=login;
-	  this.closePopup=closePopup;
-	  this.register=register;
+function LoginObjMain() {
+    this.login = login;
+    this.closePopup = closePopup;
+    this.register = register;
 
-   function login() {
-	   var LoginLink=document.getElementById("LoginLink").innerHTML;
-	   if(LoginLink=="LOGOUT"){
-	     document.getElementById("LoginLink").innerHTML="LOGIN";
-	   }
-	   else{
-    console.log("script");
-    loginDiv.style.display="block";
-    display.style.display='block';
-	   }
-    
+    function login() {
+        var LoginLink = document.getElementById("LoginLink").innerHTML;
+
+        if (LoginLink == "LOGOUT") {
+            validate.alertDisplay("Logging out");
+           
+            document.getElementById("LoginLink").innerHTML = "LOGIN";
+            document.getElementById("RegisterLink").innerHTML = "REGISTER";
+
+        }
+        else {
+            console.log("script");
+            loginDiv.style.display = "block";
+            display.style.display = 'block';
+        }
+
     }
-     function closePopup(){
-   
-    display.style.display='none';
-    displayRegister.style.display='none';
-	 validate.resetForm();
+    function closePopup() {
+       document.getElementById("Username").value="";
+        document.getElementById("Password").value="";
+        
+        display.style.display = 'none';
+        displayRegister.style.display = 'none';
+        validate.resetForm();
     }
 
-	function register() {
-    loginDiv.style.display="none";
-    displayRegister.style.display='block';
+    function register() {
+        var RegisterLink=document.getElementById("RegisterLink").innerHTML;
+        if (RegisterLink=="REGISTER") {
+            loginDiv.style.display = "none";
+        displayRegister.style.display = 'block';
+        }
+        else{
+            alert("profile update still pending");
+        }
+        
     }
 
 }
-
-
 
 
 let submitBtn = document.getElementById("submit");
 let oninputValidate = document.getElementsByClassName("inpValid");
 
 submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
     validate.validationForm();
 })
 
 
-var validate = new ValidationFormMain();
+// var validate = new ValidationFormMain();
 
 function ValidationFormMain() {
     this.validationForm = validationForm;
     this.resetForm = resetForm;
     this.inputErrorDisplay = inputErrorDisplay;
-	this.loginAuth = loginAuth;
+    this.loginAuth = loginAuth;
+    this.alertDisplay=alertDisplay;
 
     function validationForm() {
         let fname = document.getElementById("fname").value;
@@ -76,7 +90,7 @@ function ValidationFormMain() {
         let city = document.getElementById("city").value;
         let addressArea = document.getElementById("addressArea").value;
         let checkboxes = document.querySelectorAll('input[name="Skills"]:checked');
-		 let dateValidationResult = isValidDate(dob);
+        let dateValidationResult = isValidDate(dob);
         // let dateValidationResult = isValidDate(dob);
 
         let pattern = /^[a-zA-Z]{1,15}$/;
@@ -91,16 +105,15 @@ function ValidationFormMain() {
             alertDisplay("Enter first name it is mandatory");
 
         }
-		else if (!fname.match(pattern))
-		{
-			alertDisplay("First name not contain numbers");
-		}
+        else if (!fname.match(pattern)) {
+            alertDisplay("First name not contain numbers");
+        }
         else if (lname == "") {
-           
+
             alertDisplay("Last name is mandatory");
         }
-		else if (!lname.match(pattern)) {
-            
+        else if (!lname.match(pattern)) {
+
             alertDisplay("Last name not contain numbers");
         }
 
@@ -110,20 +123,20 @@ function ValidationFormMain() {
         else if (dob == '') {
             alertDisplay("Enter date of-birth");
         }
-		else if (!dobvalidate.test(dob)) {
-                alertDisplay("Please enter a valid date of birth in the format dd/mm/yyyy");
+        else if (!dobvalidate.test(dob)) {
+            alertDisplay("Please enter a valid date of birth in the format dd/mm/yyyy");
         }
         else if (dateValidationResult === "invalidFormat") {
-                alertDisplay("Please enter a valid date of birth ");
-               
+            alertDisplay("Please enter a valid date of birth ");
+
         }
         else if (dateValidationResult === "invalidDate") {
-                alertDisplay("Please enter a valid date");
-                
+            alertDisplay("Please enter a valid date");
+
         }
         else if (dateValidationResult === "futureDate") {
-                alertDisplay("Date of birth should be before the year 2024");
-                
+            alertDisplay("Date of birth should be before the year 2024");
+
         }
         else if (mobile == "") {
             alertDisplay("Please enter mobile number");
@@ -140,9 +153,9 @@ function ValidationFormMain() {
         else if (pattern.test(mobile)) {
             alertDisplay("Mobile no not contain alphabets");
         }
-		else if(age==""){
-		    alertDisplay("Enter your age");
-		}
+        else if (age == "") {
+            alertDisplay("Enter your age");
+        }
 
         else if (!(age > 17 && age < 70)) {
             alertDisplay("Your age was not eligible for register");
@@ -217,6 +230,7 @@ function ValidationFormMain() {
     }
 
     function alertDisplay(msg) {
+        console.log("Entered");
         document.getElementById("alertBox").style.display = 'block';
         document.getElementById("alertBox").style.background = "linear-gradient(147deg, #990000 0%, #ff0000 74%)";
         document.getElementById("msg").innerHTML = msg;
@@ -224,18 +238,21 @@ function ValidationFormMain() {
         setTimeout(function () {
             document.getElementById("alertBox").style.display = 'none';
         }, 3000);
-
+        console.log("Finished");
+    
     }
+    
+
 
     function resetForm() {
 
         document.getElementById('formObj').reset();
 
-         var errorDiv=document.querySelectorAll(".errorDiv");
-		 errorDiv.forEach(function(item){
-            item.innerHTML="&nbsp;";
-		 });
-         
+        var errorDiv = document.querySelectorAll(".errorDiv");
+        errorDiv.forEach(function (item) {
+            item.innerHTML = "&nbsp;";
+        });
+
     }
 
     function inputErrorDisplay(e) {
@@ -245,7 +262,7 @@ function ValidationFormMain() {
         if (e.id == "fname" || e.id == "lname") {
             if (e.value.match("[^a-zA-Z]")) {
                 err.innerHTML = "Error Name Not Contain number";
-				
+
             }
 
             else {
@@ -260,15 +277,15 @@ function ValidationFormMain() {
             }
             else if (dateValidationResult === "invalidFormat") {
                 err.innerHTML = "Please enter a valid date of birth ";
-               
+
             }
             else if (dateValidationResult === "invalidDate") {
                 err.innerHTML = "Please enter a valid date";
-                
+
             }
             else if (dateValidationResult === "futureDate") {
                 err.innerHTML = "Date of birth should be before the year 2024";
-                
+
             }
             else {
                 err.innerHTML = "&nbsp;";
@@ -278,22 +295,25 @@ function ValidationFormMain() {
 
     }
 
-	function loginAuth(btn){
-		    var  Username="Gaurav";
-	var password=1234;
-	var inpUsername = document.getElementById("Username").value;
-	var inpPassword = document.getElementById("Password").value;
-	var LoginLink= document.getElementById("LoginLink").innerHTML;
-		console.log(inpUsername);
-		console.log(inpPassword);
-	  if(Username==inpUsername && password==inpPassword){
-	    loginObj.closePopup();
-		document.getElementById("LoginLink").innerHTML="LOGOUT";
-       // console.log(LoginLink);
-	  }
-	  else{
-	  alert("denied");
-	  }
-	}
+    function loginAuth(btn) {
+        var Username = "Gaurav";
+        var password = 1234;
+        var inpUsername = document.getElementById("Username").value;
+        var inpPassword = document.getElementById("Password").value;
+        var LoginLink = document.getElementById("LoginLink").innerHTML;
+
+        console.log(inpUsername);
+        console.log(inpPassword);
+        if (Username == inpUsername && password == inpPassword) {
+            loginObj.closePopup();
+            document.getElementById("LoginLink").innerHTML = "LOGOUT";
+            document.getElementById("RegisterLink").innerHTML = "PROFILE";
+            
+        }
+        else {
+            alert("Denied");
+        }
+    }
 
 }
+
