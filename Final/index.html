@@ -38,8 +38,8 @@
 					<li><a href="">OUR MISSION</a></li>
 					<li><a href="">NEWS & PRESS</a></li>
 					<li><a href="">CONTACT</a></li>
-					<li><a href="#" onclick="register()">REGISTER</a></li>
-					<li><a href="#" onclick="login()">LOGIN</a></li>
+					<li><a href="#" onclick="loginObj.register()">REGISTER</a></li>
+					<li><a href="#" onclick="loginObj.login()" id="LoginLink">LOGIN</a></li>
 					<!-- <li style="clear:both"></li> -->
 
 				</ul>
@@ -265,22 +265,24 @@
 				class="lastText">Template.com</a>
 
 		</div>
+
+		<!---------------------------------- login form ------------------------------------------------------->
 		<div id="popupDiv" 	>
 			<div id="popupChildMain">
 
 			<div id="LoginImg"></div>
             <div id="popup-child">
-                <span id="close" onclick="closePopup()">&times;</span>
+                <span id="close" onclick="loginObj.closePopup()">&times;</span>
 				<h1 style="text-align: center;color: azure;margin: 30px;">Login Form</h1>
 				<div id="formDiv">
 					
 					<!-- <label for="" id="labelUsername">Username :</label> <br> -->
 				    <input type="text" id="Username" placeholder="Email / Mobile number"> <br> <br> <br>
 					<!-- <label for="" id="labelPassword">Password :</label> <br> -->
-					<input type="password" id="Password" placeholder="Password">
+					<input type="text" id="Password" placeholder="Password">
 					<br> <br>
-					<span id="registerLinkDiv"><a href="#" onclick="register()" id="registerlink">Not having account yet ? Register</a></span>
-					<button id="Loginbtn">Login</button>
+					<span id="registerLinkDiv"><a href="#" onclick="loginObj.register()" id="registerlink">Not having account yet ? Register</a></span>
+					<button id="Loginbtn" onclick="validate.loginAuth(this)">Login</button>
 
 				</div>
 				
@@ -290,86 +292,90 @@
 
 		</div>
 
+          <!------------------------------------- registration form --------------------------------- -->
 		<div id="registerPopUp">
 			<div id="Formcontainer">
 				<div id="formDiv1">
-				 <form action="" id="formObj">
-				 <!-- <div id="nameDiv" class=""> -->
-					 <label for="fname" class="lableColor">First Name : </label> <br>
-					 
-					 <input type="text" id="fname" name="firstname" placeholder="Your First name.."  >
-					 <div id="errorSpan" class="errorDiv"></div>
-					 <br>
-					  <!-- </div> -->
-					  
-					  <!-- <div id="lnameDiv" class=""> -->
-						 <label for="lname" class="lableColor">Last Name : </label> <br>
-					 
-					 <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-					 <div id="errorSpan1" class="errorDiv"></div>
-					  <!-- </div> -->
-					 
-					 
-					 <label for="gender" class="lableColor">Gender : </label>
-					 <input type="radio" name="gender" id="gender" value="male"><label for="male" class="lableColor">Male</label>
-					 <input type="radio" name="gender" id="gender" value="female"><label for="female" class="lableColor">Female</label>
-					 <input type="radio" name="gender" id="gender" value="Other"><label for="other" class="lableColor">Other</label>
-					 <div id="errorSpan"></div>
-					 <br>
-					 <div id="dobDiv" class="">
-						 <label for="dob" class="lableColor">Date Of Birth : </label> <br>
-						 
-					 <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" onblur="">
-					 <div id="dobErrorDiv"></div>
-					 </div>
-		 
-					  <div id="ageDiv" class="">
-						 <label for="age" class="lableColor">Age : </label> <br>
-						 
-					 <input type="number" name="age" id="age" >
-					 <div id="ageErrorDiv"></div>
-					  </div>
-				 
-					 
-					 
-					 <!-- <label for="mob">Mobile no : </label> <br>
-					 
-					 <input type="tel" name="mob" id="mobile" minlength=0 maxlength=10> -->
-					 <br>
-					 <label for="address" class="lableColor">Address : </label><br>
-					 <textarea name="" id="" cols="53" rows="3" style="margin:10px"></textarea>
-					 <div id="errorSpan"></div>
-					 
-					 
-					 <div id="cityDiv" class="">
-						 <label for="city" class="lableColor">City : </label>
-						 <br>
-						 <select name="city" id="city">
-						 <option value="Pune">Pune</option>
-						 <option value="Mumbai">Mumbai</option>
-						 <option value="Nashik">Nashik</option>
-						 <option value="Jalgaon">Jalgaon</option>
-						 <option value="Surat">Surat</option>
-						 <option value="Nagpur">Nagpur</option>
-		 
-					 </select>
-						 
-					 </div>
-					 
-					 
-					
-					<br>
-					<label for="Skills" class="lableColor">Techinical Skills : </label>
-						 <!-- <input type="checkbox" name="Skills" class="checkBoxDiv" id="java" value="Java"><label for="">Java</label> -->
-						 <input type="checkbox" name="Skills" class="checkBoxDiv" id="html" value="Html"><label for="" class="lableColor">Html</label>
-						 
-						 <input type="checkbox" name="Skills" class="checkBoxDiv" id="css" value="Css"><label for="" class="lableColor">CSS</label>
-						 <input type="checkbox" name="Skills" class="checkBoxDiv" id="javascript" value="Javascript"><label for="" class="lableColor">Javascript</label>
-						 <div id="errorSpan"></div>
-				 </form>
+				<form action="" id="formObj">
+				<span id="closeRegister" onclick="loginObj.closePopup()">&times;</span>
+		<!-- <div id="nameDiv" class=""> -->
+			<label for="fname" class="lableColor">First Name <span class="starColor">*</span>: </label> <br>
+            
+            <input type="text" id="fname" name="firstname" placeholder="Your First name.." class="inpformat inpValid" oninput="validate.inputErrorDisplay(this)" autofocus>
+            <div id="firstnameError" class="errorDiv">&nbsp;</div>
+			<!-- <br> -->
+             <!-- </div> -->
+			 
+             <!-- <div id="lnameDiv" class=""> -->
+				<label for="lname" class="lableColor">Last Name <span class="starColor">*</span> : </label> <br>
+            
+            <input type="text" id="lname" name="lastname" placeholder="Your last name.." class="inpformat inpValid" oninput="validate.inputErrorDisplay(this)">
+            <div id="lastnameError" class="errorDiv">&nbsp;</div>
+             <!-- </div> -->
+            
+            
+			<label for="gender" class="lableColor">Gender <span class="starColor">*</span>: </label>
+            <label  class="lableColor"><input type="radio" name="gender" id="gender" value="male">Male</label>
+            <label class="lableColor"><input type="radio" name="gender" id="gender" value="female">Female</label>
+			<label class="lableColor"><input type="radio" name="gender" id="gender" value="Other">Other</label>
+            <div id="errorSpan" ></div>
+            <br>
+			<div id="dobDiv" class="">
+				<label for="dob" class="lableColor">Date Of Birth <span class="starColor">*</span>: </label> <br>
+				
+            <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" oninput="validate.inputErrorDisplay(this)" class="inpformat" >
+            <div id="dobError" class="errorDiv">&nbsp;</div>
+            </div>
+
+             <div id="ageDiv" class="">
+				<label for="age" class="lableColor">Age <span class="starColor">*</span>: </label> <br>
+				
+            <input type="number" name="age" id="age" class="inpformat">
+            <div id="ageErrorDiv" class="errorDiv">&nbsp;</div>
+             </div>
+		
+            
+            
+            <label for="mob" class="lableColor">Mobile no <span class="starColor">*</span>: </label> <br>
+            
+            <input type="tel" name="mob" id="mobile" minlength=0 maxlength=10 class="inpformat">
+            <br>
+			<label for="address" class="lableColor">Address <span class="starColor">*</span>: </label><br>
+			<textarea name="" id="addressArea" cols="53" rows="" style="margin:10px;width:400px;"></textarea>
+            <div id="errorSpan"class="errorDiv"></div>
+			
+			
+			<div id="cityDiv" class="">
+				<label for="city" class="lableColor">City <span class="starColor">*</span>: </label>
+				<br>
+				<select name="city" id="city">
+                <option value="" >Select city</option>
+                <option value="Pune">Pune</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Nashik">Nashik</option>
+				<option value="Jalgaon">Jalgaon</option>
+				<option value="Surat">Surat</option>
+			    <option value="Nagpur">Nagpur</option>
+
+            </select>
+				
+			</div>
+			
+            
+           
+           <br>
+           <label for="Skills" class="lableColor">Techinical Skills <span class="starColor">*</span>: </label>
+                <!-- <input type="checkbox" name="Skills" class="checkBoxDiv" id="java" value="Java"><label for="">Java</label> -->
+                <label class="lableColor"><input type="checkbox" name="Skills" class="checkBoxDiv" id="html" value="Html">Html</label>
+                
+                <label class="lableColor"><input type="checkbox" name="Skills" class="checkBoxDiv" id="css" value="Css">CSS</label>
+                <label class="lableColor"><input type="checkbox" name="Skills" class="checkBoxDiv" id="javascript" value="Javascript">
+				Javascript</label>
+				<div id="checkboxError" class="errorDiv">&nbsp;</div>
+        </form>
 				 <div id="btn-div" class="">
-					 <button onclick="" class="btn" id="submit">Submit</button>
-					 <button onclick="document.getElementById('formObj').reset()" class="btn" id="reset">Reset</button>
+					 <button onclick="" class="btn" id="submit">Register &rarr;</button>
+					 <button onclick="validate.resetForm()" class="btn" id="reset">Reset</button>
 				 </div>
 				 
 				</div>
