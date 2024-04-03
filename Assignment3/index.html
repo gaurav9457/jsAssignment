@@ -8,15 +8,16 @@
   <meta name="Description" content="">
   <title>Document</title>
   <link rel="stylesheet" href="./css/style.css">
+ <script src="./js/script.js" ></script>
  </head>
  <body>
     <div id="container">
        <div id="formDiv">
-        <form action="" id="formObj">
+        <form  id="formObj">
 		<!-- <div id="nameDiv" class=""> -->
 			<label for="fname" class="lableColor">First Name <span class="starColor">*</span>: </label> <br>
             
-            <input type="text" id="fname" name="firstname" placeholder="Your First name.." class="inpformat inpValid" oninput="validate.inputErrorDisplay(this)">
+            <input type="text" id="fname" name="firstname" placeholder="Your First name.." class="inpformat inpValid" oninput="validate.inputErrorDisplay(this)" autofocus>
             <div id="firstnameError" class="errorDiv">&nbsp;</div>
 			<!-- <br> -->
              <!-- </div> -->
@@ -30,9 +31,9 @@
             
             
 			<label for="gender" class="lableColor">Gender <span class="starColor">*</span>: </label>
-            <input type="radio" name="gender" id="gender" value="male"><label for="male" class="lableColor">Male</label>
-            <input type="radio" name="gender" id="gender" value="female"><label for="female" class="lableColor">Female</label>
-			<input type="radio" name="gender" id="gender" value="Other"><label for="other" class="lableColor">Other</label>
+            <label class="lableColor"><input type="radio" name="gender" id="gender" value="male">Male</label>
+            <label  class="lableColor"><input type="radio" name="gender" id="gender" value="female">Female</label>
+			<label  class="lableColor"><input type="radio" name="gender" id="gender" value="Other">Other</label>
             <div id="errorSpan" ></div>
             <br>
 			<div id="dobDiv" class="">
@@ -46,7 +47,7 @@
 				<label for="age" class="lableColor">Age <span class="starColor">*</span>: </label> <br>
 				
             <input type="number" name="age" id="age" class="inpformat">
-            <div id="ageErrorDiv" class="errorDiv"></div>
+            <div id="ageErrorDiv" class="errorDiv">&nbsp;</div>
              </div>
 		
             
@@ -55,13 +56,13 @@
             
             <input type="tel" name="mob" id="mobile" minlength=0 maxlength=10 class="inpformat">
             <br>
-			<label for="address" class="lableColor">Address : </label><br>
+			<label for="address" class="lableColor">Address <span class="starColor">*</span>: </label><br>
 			<textarea name="" id="addressArea" cols="53" rows="" style="margin:10px;width:400px;"></textarea>
-            <div id="errorSpan"class="errorDiv"></div>
+            <div id="errorSpan"class="errorDiv">&nbsp;</div>
 			
 			
 			<div id="cityDiv" class="">
-				<label for="city" class="lableColor">City : </label>
+				<label for="city" class="lableColor">City <span class="starColor">*</span>: </label>
 				<br>
 				<select name="city" id="city">
                 <option value="" >Select city</option>
@@ -81,16 +82,21 @@
            <br>
            <label for="Skills" class="lableColor">Techinical Skills <span class="starColor">*</span>: </label>
                 <!-- <input type="checkbox" name="Skills" class="checkBoxDiv" id="java" value="Java"><label for="">Java</label> -->
-                <input type="checkbox" name="Skills" class="checkBoxDiv" id="html" value="Html"><label for="" class="lableColor">Html</label>
+                <label class="lableColor"><input type="checkbox" name="Skills" class="checkBoxDiv" id="html" value="Html">Html</label>
                 
-                <input type="checkbox" name="Skills" class="checkBoxDiv" id="css" value="Css"><label for="" class="lableColor">CSS</label>
-                <input type="checkbox" name="Skills" class="checkBoxDiv" id="javascript" value="Javascript"><label for="" class="lableColor">Javascript</label>
+                <label class="lableColor"><input type="checkbox" name="Skills" class="checkBoxDiv" id="css" value="Css">CSS</label>
+                <label class="lableColor"><input type="checkbox" name="Skills" class="checkBoxDiv" id="javascript" value="Javascript">
+				Javascript</label>
 				<div id="checkboxError" class="errorDiv">&nbsp;</div>
+
+				<div id="btn-div" class="">
+			        <button   class="btn" id="submit" >Submit</button>
+		            <button onclick="" class="btn" id="resetBtn">Reset</button>
+		       </div>
+
         </form>
-		<div id="btn-div" class="">
-			<button onclick="" class="btn" id="submit">Submit &rarr;</button>
-		    <button onclick="validate.resetForm()" class="btn" id="reset">Reset</button>
-		</div>
+		
+		
         
        </div>
 
@@ -103,6 +109,6 @@
     </div>
 
     </div>
-    <script src="./js/script.js"></script>
+     
 </body>
 </html>
