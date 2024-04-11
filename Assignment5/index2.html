@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid with Hover Effect</title>
+<style>
+    .grid-item {
+        width: 100px;
+        height: 100px;
+        background-color: yellow; /* Initial background color */
+        float: left;
+        margin: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .grid-item:hover {
+        background-color: red; /* Background color on hover */
+    }
+
+    .clicked {
+        background-color: red !important; /* Preserve red background color after click */
+    }
+</style>
+</head>
+<body>
+
+<div id="divParent"></div>
+
+<script>
+var gridItems = [];
+
+function addDiv() {
+    let divParent = document.getElementById("divParent");
+    divParent.style.width = 100 * 3 + 3 * 8 + "px";
+    for (var i = 1; i <= 3; i++) {
+        for (var j = 1; j <= 3; j++) {
+
+            var gridItem = document.createElement("div");
+            gridItem.setAttribute("id", j);
+            gridItem.classList.add("grid-item");
+            gridItem.style.float = 'left';
+            gridItem.style.margin = '4px';
+
+            // Event listener for click
+            gridItem.addEventListener("click", function() {
+                if (this.classList.contains("clicked")) {
+                    this.classList.remove("clicked");
+                } else {
+                    this.classList.add("clicked");
+                }
+            });
+
+            divParent.appendChild(gridItem);
+            gridItems.push(gridItem); // Store the grid item in an array
+        }
+
+        var clearDiv = document.createElement("div");
+        clearDiv.style.clear = "both";
+        divParent.appendChild(clearDiv);
+
+    }
+}
+
+addDiv();
+</script>
+
+</body>
+</html>
